@@ -9,25 +9,27 @@ public class ScorePredictor implements Subscriber{
 	
 	private ArrayList<Integer> team1GameScores;
 	ArrayList<Integer> team2GameScores;
-	private int team1Score;
-	private int team2Score;
-	private int team1Prediction;
-	private int team2Prediction;
-	private String team1Name;
-	private String team2Name;
+	private int team1Prediction = -1;
+	private int team2Prediction = -1;
+	private int correctPredictions = 0;
+	
+	private Team team1;
+	private Team team2;
 
 	@Override
 	public void update(Team team1, Team team2, boolean gameOver) {
 		
-		if (!gameOver) {
-			team1Score = team1.getScore();
-			team2Score = team2.getScore();
-			team1Name = team1.getName();
-			team2Name = team2.getName();
-			
-			team1GameScores.add(team1Score);
-			team2GameScores.add(team2Score);
-			
+		this.team1.setScore(team1.getScore());
+		this.team2.setScore(team2.getScore());
+		this.team1.setName(team1.getName());
+		this.team2.setName(team2.getName());
+		
+		checkPreviousPredictions();
+		
+		team1GameScores.add(team1.getScore());
+		team2GameScores.add(team2.getScore());
+		
+		if (!gameOver) {		
 			generatePrediction();
 		}
 		
@@ -35,8 +37,8 @@ public class ScorePredictor implements Subscriber{
 	
 	private void generatePrediction() {
 		
-		team1Prediction = team1Score + getAvgScorePerQuarter(team1GameScores);
-		team2Prediction = team2Score + getAvgScorePerQuarter(team2GameScores);
+		team1Prediction = team1.getScore() + getAvgScorePerQuarter(team1GameScores);
+		team2Prediction = team2.getScore() + getAvgScorePerQuarter(team2GameScores);
 		
 	}
 	
@@ -50,10 +52,31 @@ public class ScorePredictor implements Subscriber{
 		
 	}
 	
+	private void checkPreviousPredictions() {
+		
+		if (team1Prediction != -1) {
+			if (team1.getScore() == team1Prediction) {
+				correctPredictions++;
+			}
+		}
+		if (team2Prediction != -1) {
+			if (team2.getScore() == team2Prediction) {
+				correctPredictions++;
+			}
+		}
+		
+	}
+	
 	public String getPrediction() {
 		
-		return "I predict " + team1Name + " will have " + team1Prediction + " points and " + team2Name + " will have " + team2Prediction + " points next quarter.";
+		return "I predict " + team1.getName() + " will have " + team1Prediction + " points and " + team2.getName() + " will have " + team2Prediction + " points next quarter.";
 		
+	}
+	
+	public int getCorrectPredictions() {
+		
+		return correctPredictions;
+				
 	}
 
 }

@@ -1,11 +1,12 @@
 package observers;
 
 import interfaces.Subscriber;
+import objects.Team;
 
 public class WinTracker implements Subscriber{
 
 	@Override
-	public void update(int team1Score, int team2Score, String team1Name, String team2Name) {
+	public void update(Team team1, Team team2) {
 		// TODO Auto-generated method stub
 		
 	}

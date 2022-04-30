@@ -20,6 +20,7 @@ public class GameData implements Subject{
 	
 	public GameData() {
 		
+		teamList = new ArrayList<Team>();
 		populateTeams();
 		subscriberList = new ArrayList<Subscriber>();
 		
@@ -54,6 +55,7 @@ public class GameData implements Subject{
 		System.out.println("Playing quarter " + quarter);
 		team1.setScore(team1.getScore() + randGen.nextInt(60));
 		team2.setScore(team2.getScore() + randGen.nextInt(60));
+		notifySubscribers();
 		quarter++;
 		
 		if (quarter >= 5) {
@@ -81,6 +83,7 @@ public class GameData implements Subject{
 	
 	public void endGame() {
 		
+		System.out.println("Game over!");
 		gameOver = true;
 		notifySubscribers();
 		team1.setScore(0);

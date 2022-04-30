@@ -35,19 +35,19 @@ public class Driver {
 				
 				userInput = user.next();
 				
-				if (userInput == "1") {
+				if (userInput.equals("1")) {
 					game.startGame();
-				} else if (userInput == "2") {
+				} else if (userInput.equals("2")) {
 					System.out.println("Correct predictions: " + scorePredictor.getCorrectPredictions());
-				} else if (userInput == "3") {
+				} else if (userInput.equals("3")) {
 					System.out.println(winTracker.getMatches());
-				} else if (userInput == "4") {
+				} else if (userInput.equals("4")) {
 					if (newsGenerator.getNewsTitle() != null) {
 						System.out.println(newsGenerator.getNewsTitle());
 					} else {
 						System.out.println("There doesn't seem to be a prior game to write about.");
 					}
-				} else if (userInput == "5") {
+				} else if (userInput.equals("5")) {
 					loop = false;
 				} else {
 					System.out.println("Your input is bad and you should feel bad. Try again.");
@@ -65,23 +65,23 @@ public class Driver {
 				
 				userInput = user.next();
 				
-				if (userInput == "1") {
+				if (userInput.equals("1")) {
 					game.playQuarter();
-				} else if (userInput == "2") {
+				} else if (userInput.equals("2")) {
 					System.out.println(game.getScores());
-				} else if (userInput == "3") {
+				} else if (userInput.equals("3")) {
 					System.out.println(scorePredictor.getPrediction());
-				} else if (userInput == "4") {
-					System.out.println(scorePredictor.getCorrectPredictions());
-				} else if (userInput == "5") {
+				} else if (userInput.equals("4")) {
+					System.out.println("Correct predictons: " + scorePredictor.getCorrectPredictions());
+				} else if (userInput.equals("5")) {
 					System.out.println(winTracker.getMatches());
-				} else if (userInput == "6") {
+				} else if (userInput.equals("6")) {
 					if (newsGenerator.getNewsTitle() != null) {
 						System.out.println(newsGenerator.getNewsTitle());
 					} else {
 						System.out.println("There doesn't seem to be a prior game to write about.");
 					}
-				} else if (userInput == "7") {
+				} else if (userInput.equals("7")) {
 					loop = false;
 				} else {
 					System.out.println("Your input is bad and you should feel bad. Try again.");

@@ -7,17 +7,18 @@ import objects.Team;
 
 public class ScorePredictor implements Subscriber{
 	
-	private ArrayList<Integer> team1GameScores;
-	ArrayList<Integer> team2GameScores;
+	private ArrayList<Integer> team1GameScores = new ArrayList<Integer>();
+	private ArrayList<Integer> team2GameScores = new ArrayList<Integer>();
 	private int team1Prediction = -1;
 	private int team2Prediction = -1;
 	private int correctPredictions = 0;
 	
-	private Team team1;
-	private Team team2;
+	private Team team1 = new Team("");
+	private Team team2 = new Team("");
 
 	@Override
 	public void update(Team team1, Team team2, boolean gameOver) {
+		
 		
 		this.team1.setScore(team1.getScore());
 		this.team2.setScore(team2.getScore());

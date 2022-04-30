@@ -15,7 +15,7 @@ public class GameData implements Subject{
 	private Team team1;
 	private Team team2;
 	private int quarter = 0;
-	private boolean gameOver;
+	private boolean gameOver = true;
 	private ArrayList<Subscriber> subscriberList;
 	
 	public GameData() {
@@ -111,6 +111,16 @@ public class GameData implements Subject{
 		team = new Team("Miami Heat");
 		teamList.add(team);
 		
+	}
+	
+	public boolean isOver() {
+		
+		return gameOver;
+		
+	}
+	
+	public String getScores() {
+		return team1.getName() + " - " + team1.getScore() + " vs. " + team2.getScore() + " - " + team2.getName();
 	}
 	
 }

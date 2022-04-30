@@ -27,7 +27,7 @@ public class WinTracker implements Subscriber{
 		
 		String matchTable = "";
 		for (int i = 0; i <= matchNumber; i++) {
-			matchTable += matchTeams[i][0] + " " + matchScores[i][0] + " vs. " + matchScores[i][1] + " " + matchTeams[i][1];
+			matchTable += matchTeams[i][0] + " " + matchScores[i][0] + " vs. " + matchScores[i][1] + " " + matchTeams[i][1] + "\n";
 		}
 		return matchTable;
 		
